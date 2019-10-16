@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:udonote/loginpass.dart';
 import 'package:udonote/todolist.dart';
 
+import 'createList.dart';
+import 'map.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +15,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: MyHomePage(title: 'UDONOTE'),
+       initialRoute: '/',
+       routes: {
+    '/': (context) => MyHomePage(),
+    '/home': (context) => TodoState(),
+    '/todo':(context)=> CreateListState(),
+    '/map':(context)=> MapState(),
+  }
     );
   }
 }
@@ -52,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 
-               Image.asset('assets/images/UD.png',width: 130,height: 190),
+               Text("Travelers Note",style: TextStyle(color: Colors.white,height: 9,fontSize: 20.0,fontWeight: FontWeight.bold),),
                PasswordInputField(Icon(Icons.person, color: Colors.white), 'Username'),
                PasswordInputField(Icon(Icons.lock, color: Colors.white), 'Password'),
               Container(
@@ -62,11 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8.0))),
                  textColor: Colors.white,
                  onPressed: (){
-                  Navigator.push(context,MaterialPageRoute(builder: (context) => Todo()),);
+                  Navigator.pushNamed(context,'/home',);
                  },
                  color: Colors.yellow,
                  child: Text('Login',
-                 style: TextStyle(fontSize: 20),
+                 style: TextStyle(fontSize: 18),
                  ),
                  
                ),

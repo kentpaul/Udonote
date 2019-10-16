@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:udonote/createList.dart';
-
 import 'data.dart';
 
-class TodoState extends StatefulWidget {
+class MapState extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _TodoState();
+    return _MapState();
   }
 }
 
-class _TodoState extends State<TodoState> {
-  List<String> _data = ["John Doe","Doe Jon","John Doe","Doe Jon","John Doe","Doe Jon","John Doe","Doe Jon","John Doe","Doe Jon"];
-  
-
+class _MapState extends State<MapState> {
+ 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -53,10 +48,11 @@ class _TodoState extends State<TodoState> {
                 children: <Widget>[
                   Expanded(
                     child: OutlineButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context,'/home',);
+                      },
                       child: Icon(
                         Icons.home,
-                        color: Colors.red,
                       ),
                     ),
                   ),
@@ -75,15 +71,13 @@ class _TodoState extends State<TodoState> {
                     child: OutlineButton(
                       child: Icon(
                         Icons.map,
-                      ),
-                      onPressed: () {
-                        Navigator.pushNamed(context,'/map',);
-                      },
+                      color: Colors.red,),
+                      onPressed: () {},
                     ),
                   )
                 ],
               ),
-              Expanded(child: Data(_data))
+              Expanded(child: Text("Google Map"))
             
           ],
           ),
